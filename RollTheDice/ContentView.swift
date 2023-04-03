@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State private var diceResult: Int? = nil
     @State private var previousRolls = [Int]()
+    @State private var numberOfDice = 1
+    @State private var sidesOfDice = 6
+    
+    let diceOptions = [4, 6, 8, 10, 12, 20, 100]
     
     var body: some View {
         VStack(spacing: 20) {
@@ -17,6 +21,34 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .bold()
                 .accessibilityLabel("Dice Roller")
+            
+            HStack {
+                VStack {
+                    Text("Number of Dice: ")
+                    Picker("Number of Dice", selection: $numberOfDice) {
+                        ForEach(1...10, id: \.self) { number in
+                            Text("\(number)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .frame(width: 120, height: 100)
+                    .clipped()
+                }
+                .accessibilityLabel("Number of dice picker")
+                
+                VStack {
+                    Text("Sides of Dice:")
+                    Picker("Sides of Dice", selection: $sidesOfDice) {
+                        ForEach(diceOptions, id: \.self){ sides in
+                            Text("\(sides)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .frame(width: 120, height: 100)
+                    .clipped()
+                }
+                .accessibilityLabel("Sides of dice picker")
+            }
             
             Text(diceResult != nil ? "Current Roll: \(diceResult!)" : "Roll the dice to start")
                 .font(.title)
