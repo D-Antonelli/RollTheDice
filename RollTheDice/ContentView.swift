@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var diceResult = 0
+    @State private var diceResult: Int? = nil
     @State private var previousRolls = [Int]()
     
     var body: some View {
@@ -18,11 +18,11 @@ struct ContentView: View {
                 .bold()
                 .accessibilityLabel("Dice Roller")
             
-            Text("Current Roll: \(diceResult)")
+            Text(diceResult != nil ? "Current Roll: \(diceResult!)" : "Roll the dice to start")
                 .font(.title)
                 .bold()
                 .accessibilityLabel("Current Roll")
-                .accessibilityValue("\(diceResult)")
+                .accessibilityValue(diceResult != nil ? "\(diceResult!)" : "No roll yet")
             
             Button(action: rollDice) {
                 Text("Roll Dice")
@@ -59,7 +59,9 @@ struct ContentView: View {
     
     func rollDice() {
         let newRoll = Int.random(in: 1...6)
-        previousRolls.append(diceResult)
+        if let previousResult = diceResult {
+            previousRolls.append(previousResult)
+        }
         diceResult = newRoll
     }
 }
