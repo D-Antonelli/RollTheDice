@@ -61,7 +61,10 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    viewModel.rollDice()
+                    Task.init {
+                        await viewModel.rollDice()
+                    }
+                    
                 } label: {
                     Text("Roll Dice")
                         .font(.headline)

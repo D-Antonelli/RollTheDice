@@ -32,8 +32,26 @@ import UIKit
         return diceResult.reduce(0, +)
     }
     
-    func rollDice() {
+    func rollDice() async {
         generateHapticFeedback()
+        
+        let iterations = 10
+        let delay: UInt64 = 50_000_000
+        
+        for _ in 0..<iterations {
+            var tempRoll: [Int] = []
+            for _ in 0..<numberOfDice {
+                tempRoll.append(Int.random(in: 1...sidesOfDice))
+            }
+            
+            diceResult = tempRoll
+            do {
+                try await Task.sleep(nanoseconds: delay)
+            } catch {
+                break
+            }
+            
+        }
         
         var newRoll: [Int] = []
         for _ in 0..<numberOfDice {
