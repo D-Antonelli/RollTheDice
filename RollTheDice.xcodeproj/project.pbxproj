@@ -12,6 +12,7 @@
 		8A20BC9029DADEA7009585BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A20BC8F29DADEA6009585BF /* Assets.xcassets */; };
 		8A20BC9329DADEA7009585BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A20BC9229DADEA7009585BF /* Preview Assets.xcassets */; };
 		8A41A98A29DEB8D700D44898 /* DiceRollerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41A98929DEB8D700D44898 /* DiceRollerViewModel.swift */; };
+		8A41A98C29DECC9A00D44898 /* FileManager - DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41A98B29DECC9A00D44898 /* FileManager - DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		8A20BC8F29DADEA6009585BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A20BC9229DADEA7009585BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A41A98929DEB8D700D44898 /* DiceRollerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRollerViewModel.swift; sourceTree = "<group>"; };
+		8A41A98B29DECC9A00D44898 /* FileManager - DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager - DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				8A41A98929DEB8D700D44898 /* DiceRollerViewModel.swift */,
 				8A20BC8F29DADEA6009585BF /* Assets.xcassets */,
 				8A20BC9129DADEA7009585BF /* Preview Content */,
+				8A41A98B29DECC9A00D44898 /* FileManager - DocumentsDirectory.swift */,
 			);
 			path = RollTheDice;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A20BC8E29DADEA5009585BF /* ContentView.swift in Sources */,
+				8A41A98C29DECC9A00D44898 /* FileManager - DocumentsDirectory.swift in Sources */,
 				8A41A98A29DEB8D700D44898 /* DiceRollerViewModel.swift in Sources */,
 				8A20BC8C29DADEA5009585BF /* RollTheDiceApp.swift in Sources */,
 			);

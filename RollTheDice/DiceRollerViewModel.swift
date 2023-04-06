@@ -9,14 +9,21 @@ import Foundation
 
 @MainActor class DiceRollerViewModel: ObservableObject {
     @Published private(set) var diceResult: [Int] = []
-    @Published private(set) var previousRolls: [[Int]] = []
+    @Published private(set) var previousRolls: [[Int]]
     @Published var numberOfDice = 1
     @Published var sidesOfDice = 6
     
     let diceOptions = [4, 6, 8, 10, 12, 20, 100]
     
-    func save(diceResult: [Int]) {
-        previousRolls.append(diceResult)
+    private let savePath = FileManager.documentsDirectory.appendingPathExtension("results.txt")
+    
+    init() {
+        do {
+            let data = try Data(contentsOf: savePath)
+            previousRolls = try JSONDecoder().decode([[Int]].self, from: data)
+        } catch {
+            previousRolls = []
+        }
     }
     
     var diceTotal: Int {
@@ -36,16 +43,17 @@ import Foundation
     
     private func saveCurrentRoll() {
         previousRolls.append(diceResult)
+        save()
     }
-
     
-//    func diceResultIsEmpty() -> Bool {
-//        return diceResult.isEmpty
-//    }
-//    
-//    func previousRollsIsEmpty() -> Bool {
-//        return previousRolls.isEmpty
-//    }
+    private func save() {
+        do {
+            let data = try JSONEncoder().encode(previousRolls)
+            try data.write(to: savePath, options: [.atomic, .completeFileProtection])
+        } catch {
+            print("\(error)")
+        }
+    }
     
     
 }
