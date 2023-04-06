@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import UIKit
 
 @MainActor class DiceRollerViewModel: ObservableObject {
     @Published private(set) var diceResult: [Int] = []
@@ -31,6 +33,8 @@ import Foundation
     }
     
     func rollDice() {
+        generateHapticFeedback()
+        
         var newRoll: [Int] = []
         for _ in 0..<numberOfDice {
             newRoll.append(Int.random(in: 1...sidesOfDice))
@@ -53,6 +57,12 @@ import Foundation
         } catch {
             print("\(error)")
         }
+    }
+    
+    private func generateHapticFeedback() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.prepare()
+        generator.notificationOccurred(.success)
     }
     
     
