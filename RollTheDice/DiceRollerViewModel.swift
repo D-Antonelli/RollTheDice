@@ -17,7 +17,7 @@ import UIKit
     
     let diceOptions = [4, 6, 8, 10, 12, 20, 100]
     
-    private let savePath = FileManager.documentsDirectory.appendingPathExtension("results.txt")
+    private let savePath = FileManager.documentsDirectory.appendingPathComponent("results.txt")
     
     init() {
         do {
