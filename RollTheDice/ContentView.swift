@@ -8,16 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var diceResult: [Int] = []
-    @State private var previousRolls: [[Int]] = []
-    @State private var numberOfDice = 1
-    @State private var sidesOfDice = 6
-    
-    let diceOptions = [4, 6, 8, 10, 12, 20, 100]
-    
-    var diceTotal: Int {
-        return diceResult.reduce(0, +)
-    }
+    @StateObject private var viewModel = DiceRollerViewModel()
     
     var body: some View {
         ScrollView {
@@ -30,7 +21,7 @@ struct ContentView: View {
                 HStack {
                     VStack {
                         Text("Number of Dice: ")
-                        Picker("Number of Dice", selection: $numberOfDice) {
+                        Picker("Number of Dice", selection: $viewModel.numberOfDice) {
                             ForEach(1...10, id: \.self) { number in
                                 Text("\(number)")
                             }
@@ -43,8 +34,8 @@ struct ContentView: View {
                     
                     VStack {
                         Text("Sides of Dice:")
-                        Picker("Sides of Dice", selection: $sidesOfDice) {
-                            ForEach(diceOptions, id: \.self){ sides in
+                        Picker("Sides of Dice", selection: $viewModel.sidesOfDice) {
+                            ForEach(viewModel.diceOptions, id: \.self){ sides in
                                 Text("\(sides)")
                             }
                         }
@@ -55,29 +46,31 @@ struct ContentView: View {
                     .accessibilityLabel("Sides of dice picker")
                 }
                 
-                Text(diceResult.isEmpty ? "No rolls yet" : "Current Roll: \(formatDiceResults(diceResult))")
+                Text(viewModel.diceResult.isEmpty ? "No rolls yet" : "Current Roll: \(formatDiceResults(viewModel.diceResult))")
                     .font(.title)
                     .bold()
                     .accessibilityLabel("Current Roll")
-                    .accessibilityValue(diceResult.isEmpty ? "No roll yet" : formatDiceResults(diceResult))
+                    .accessibilityValue(viewModel.diceResult.isEmpty ? "No roll yet" : formatDiceResults(viewModel.diceResult))
                 
-                if !diceResult.isEmpty {
-                    Text("Total: \(diceTotal)")
+                if !viewModel.diceResult.isEmpty {
+                    Text("Total: \(viewModel.diceTotal)")
                         .font(.title2)
                         .bold()
                         .accessibilityLabel("Total")
-                        .accessibilityValue("\(diceTotal)")
+                        .accessibilityValue("\(viewModel.diceTotal)")
                 }
                 
-                Button(action: rollDice) {
+                Button {
+                    viewModel.rollDice()
+                } label: {
                     Text("Roll Dice")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.blue)
                         .cornerRadius(10)
-                    
                 }
+                
                 .accessibilityLabel("Roll dice")
                 
                 VStack(alignment: .leading) {
@@ -86,13 +79,13 @@ struct ContentView: View {
                         .bold()
                         .accessibilityLabel("Previous Rolls")
                     
-                    if previousRolls.isEmpty {
+                    if viewModel.previousRolls.isEmpty {
                         Text("No previous rolls")
                             .font(.body)
                             .italic()
                     } else {
                         ScrollView {
-                            ForEach(previousRolls, id: \.self) { roll in
+                            ForEach(viewModel.previousRolls, id: \.self) { roll in
                                 Text("Roll: \(formatDiceResults(roll))")
                                     .font(.body)
                                     .accessibilityLabel("Roll")
@@ -107,20 +100,6 @@ struct ContentView: View {
             }
             .padding()
         }
-    }
-    
-    func rollDice() {
-        var newRoll: [Int] = []
-        
-        for _ in 0..<numberOfDice {
-            newRoll.append(Int.random(in: 1...sidesOfDice))
-        }
-        
-        if !diceResult.isEmpty {
-            previousRolls.append(diceResult)
-        }
-        
-        diceResult = newRoll
     }
     
     func formatDiceResults(_ results: [Int]) -> String {
