@@ -15,6 +15,10 @@ struct ContentView: View {
     
     let diceOptions = [4, 6, 8, 10, 12, 20, 100]
     
+    var diceTotal: Int {
+        return diceResult.reduce(0, +)
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
@@ -56,6 +60,14 @@ struct ContentView: View {
                     .bold()
                     .accessibilityLabel("Current Roll")
                     .accessibilityValue(diceResult.isEmpty ? "No roll yet" : formatDiceResults(diceResult))
+                
+                if !diceResult.isEmpty {
+                    Text("Total: \(diceTotal)")
+                        .font(.title2)
+                        .bold()
+                        .accessibilityLabel("Total")
+                        .accessibilityValue("\(diceTotal)")
+                }
                 
                 Button(action: rollDice) {
                     Text("Roll Dice")
