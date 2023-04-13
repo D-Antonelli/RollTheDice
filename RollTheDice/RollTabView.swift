@@ -1,17 +1,22 @@
-//
-//  RollTabView.swift
-//  RollTheDice
-//
-//  Created by Derya Antonelli on 13/04/2023.
-//
-
 import SwiftUI
 
 struct RollTabView: View {
     @EnvironmentObject var viewModel: DiceRollerViewModel
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack {
+            if !viewModel.diceResult.isEmpty {
+                HStack {
+                    ForEach(viewModel.diceResult, id: \.self) { roll in
+                        Image(systemName: "die.face.\(roll)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 50)
+                            .accessibilityLabel("Die face \(roll)")
+                    }
+                }
+            }
+
             Text(viewModel.diceResult.isEmpty ? "No rolls yet" : "Current Roll: \(formatDiceResults(viewModel.diceResult))")
                 .font(.title)
                 .bold()
@@ -30,7 +35,6 @@ struct RollTabView: View {
                 Task.init {
                     await viewModel.rollDice()
                 }
-
             } label: {
                 Text("Roll Dice")
                     .font(.headline)
@@ -40,7 +44,6 @@ struct RollTabView: View {
                     .cornerRadius(10)
             }
             .accessibilityLabel("Roll dice")
-
             Spacer()
         }
         .padding()
@@ -56,3 +59,4 @@ struct RollTabView_Previews: PreviewProvider {
         RollTabView().environmentObject(DiceRollerViewModel())
     }
 }
+
