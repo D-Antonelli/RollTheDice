@@ -23,11 +23,11 @@ struct HistoryTabView: View {
                     .italic()
             } else {
                 ScrollView {
-                    ForEach(viewModel.previousRolls, id: \.self) { roll in
-                        Text("Roll: \(formatDiceResults(roll))")
+                    ForEach(viewModel.previousRolls.indices, id: \.self) { index in
+                        Text("Roll: \(formatDiceResults(viewModel.previousRolls[index]))")
                             .font(.body)
                             .accessibilityLabel("Roll")
-                            .accessibilityValue(formatDiceResults(roll))
+                            .accessibilityValue(formatDiceResults(viewModel.previousRolls[index]))
                     }
                 }
             }

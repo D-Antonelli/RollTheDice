@@ -15,6 +15,7 @@
 		8A53FFCB29E8044700D4253F /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53FFCA29E8044700D4253F /* SettingsTabView.swift */; };
 		8A53FFCD29E8046F00D4253F /* HistoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53FFCC29E8046F00D4253F /* HistoryTabView.swift */; };
 		8A53FFCF29E804AB00D4253F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53FFCE29E804AB00D4253F /* MainView.swift */; };
+		8A53FFD129E8068800D4253F /* RollTheDiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53FFD029E8068800D4253F /* RollTheDiceApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		8A53FFCA29E8044700D4253F /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		8A53FFCC29E8046F00D4253F /* HistoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTabView.swift; sourceTree = "<group>"; };
 		8A53FFCE29E804AB00D4253F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = SOURCE_ROOT; };
+		8A53FFD029E8068800D4253F /* RollTheDiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollTheDiceApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				8A53FFCA29E8044700D4253F /* SettingsTabView.swift */,
 				8A53FFCC29E8046F00D4253F /* HistoryTabView.swift */,
 				8A53FFCE29E804AB00D4253F /* MainView.swift */,
+				8A53FFD029E8068800D4253F /* RollTheDiceApp.swift */,
 				8A53FFC829E8041E00D4253F /* RollTabView.swift */,
 				8A41A98929DEB8D700D44898 /* DiceRollerViewModel.swift */,
 				8A20BC8F29DADEA6009585BF /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 				8A41A98A29DEB8D700D44898 /* DiceRollerViewModel.swift in Sources */,
 				8A53FFC929E8041E00D4253F /* RollTabView.swift in Sources */,
 				8A53FFCB29E8044700D4253F /* SettingsTabView.swift in Sources */,
+				8A53FFD129E8068800D4253F /* RollTheDiceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
