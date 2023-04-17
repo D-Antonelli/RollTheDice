@@ -19,15 +19,10 @@ struct RollTabView: View {
                 }
             }
 
-            Text(viewModel.diceResult.isEmpty ? "No rolls yet" : "Current Roll: \(formatDiceResults(viewModel.diceResult))")
-                .font(.title)
-                .bold()
-                .accessibilityLabel("Current Roll")
-                .accessibilityValue(viewModel.diceResult.isEmpty ? "No roll yet" : formatDiceResults(viewModel.diceResult))
 
             if !viewModel.diceResult.isEmpty {
                 Text("Total: \(viewModel.diceTotal)")
-                    .font(.title2)
+                    .font(.title)
                     .bold()
                     .accessibilityLabel("Total")
                     .accessibilityValue("\(viewModel.diceTotal)")
