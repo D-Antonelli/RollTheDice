@@ -5,6 +5,8 @@ struct RollTabView: View {
 
     var body: some View {
         VStack {
+            Spacer()
+            
             if !viewModel.diceResult.isEmpty {
                 HStack {
                     ForEach(viewModel.diceResult, id: \.self) { roll in
@@ -44,9 +46,9 @@ struct RollTabView: View {
                     .cornerRadius(10)
             }
             .accessibilityLabel("Roll dice")
+            
             Spacer()
         }
-        .padding()
     }
 
     func formatDiceResults(_ results: [Int]) -> String {
