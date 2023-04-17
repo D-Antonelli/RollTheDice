@@ -57,10 +57,13 @@ import UIKit
         for _ in 0..<numberOfDice {
             newRoll.append(Int.random(in: 1...sidesOfDice))
         }
+        
+        diceResult = newRoll
+        
         if !diceResult.isEmpty {
             saveCurrentRoll()
         }
-        diceResult = newRoll
+        
     }
     
     private func saveCurrentRoll() {
