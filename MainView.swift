@@ -1,36 +1,30 @@
-//
-//  MainView.swift
-//  RollTheDice
-//
-//  Created by Derya Antonelli on 13/04/2023.
-//
-
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = DiceRollerViewModel()
+    @StateObject private var viewModel = DiceRollerViewModel()
 
     var body: some View {
         TabView {
             RollTabView()
                 .tabItem {
-                    Image(systemName: "die.face.6")
+                    Image(systemName: "die.face.6.fill")
                     Text("Roll")
                 }
 
             SettingsTabView()
                 .tabItem {
-                    Image(systemName: "gearshape")
+                    Image(systemName: "gearshape.fill")
                     Text("Settings")
                 }
 
             HistoryTabView()
                 .tabItem {
-                    Image(systemName: "clock")
+                    Image(systemName: "clock.fill")
                     Text("History")
                 }
         }
         .environmentObject(viewModel)
+        .accentColor(.blue)
     }
 }
 
@@ -39,4 +33,3 @@ struct MainView_Previews: PreviewProvider {
         MainView()
     }
 }
-
